@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25-ene-2018 9:22:36 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="muestra.Usuarios" table="usuarios" catalog="telefonia" optimistic-lock="version">
+        <id name="idUsuario" type="java.lang.Integer">
+            <column name="idUsuario" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="empresasAyto" class="muestra.EmpresasAyto" fetch="select">
+            <column name="idEmpAyto" />
+        </many-to-one>
+        <property name="nombreusuario" type="string">
+            <column name="nombreusuario" length="70" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="70" not-null="true" />
+        </property>
+        <property name="primerApellido" type="string">
+            <column name="primerApellido" length="70" not-null="true" />
+        </property>
+        <property name="segundoApellido" type="string">
+            <column name="segundoApellido" length="70" />
+        </property>
+        <property name="dni" type="string">
+            <column name="dni" length="70" not-null="true" unique="true" />
+        </property>
+        <property name="correo" type="string">
+            <column name="correo" length="70" not-null="true" />
+        </property>
+        <set name="entregases" table="entregas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idusuario" />
+            </key>
+            <one-to-many class="muestra.Entregas" />
+        </set>
+    </class>
+</hibernate-mapping>

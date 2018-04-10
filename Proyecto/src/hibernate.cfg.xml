@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.password">temporal</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost/telefonia</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.enable_lazy_load_no_trans">true</property>
+        <property name="hibernate.search.autoregister_listeners">false</property>
+        <property name="hibernate.validator.apply_to_ddl">false</property>
+        <mapping class="muestra.Entregas" />
+        <mapping class="muestra.Terminales" />
+        <mapping class="muestra.Tarjetas" />
+        <mapping class="muestra.Averiasterminales" />
+        <mapping class="muestra.Numeros" />
+        <mapping class="muestra.Estados" />
+        <mapping class="muestra.Tipostarjetas" />
+        <mapping class="muestra.Operadores" />
+        <mapping class="muestra.Histestados" />
+        <mapping class="muestra.Tipostarifas" />
+        <mapping class="muestra.Tiposdispositivos" />
+        <mapping class="muestra.DepartamentosAyto" />
+        <mapping class="muestra.Averiassim" />
+        <mapping class="muestra.EmpresasAyto" />
+        <mapping class="muestra.Marcas" />
+        <mapping class="muestra.Usuarios" />
+    </session-factory>
+</hibernate-configuration>

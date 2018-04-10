@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-schema="telefonia" match-name=".*"/>
+  <table-filter match-catalog="telefonia" match-name="averiassim"/>
+  <table-filter match-catalog="telefonia" match-name="averiasterminales"/>
+  <table-filter match-catalog="telefonia" match-name="departamentosAyto"/>
+  <table-filter match-catalog="telefonia" match-name="empresasAyto"/>
+  <table-filter match-catalog="telefonia" match-name="entregas"/>
+  <table-filter match-catalog="telefonia" match-name="estados"/>
+  <table-filter match-catalog="telefonia" match-name="histestados"/>
+  <table-filter match-catalog="telefonia" match-name="marcas"/>
+  <table-filter match-catalog="telefonia" match-name="numeros"/>
+  <table-filter match-catalog="telefonia" match-name="operadores"/>
+  <table-filter match-catalog="telefonia" match-name="tarjetas"/>
+  <table-filter match-catalog="telefonia" match-name="terminales"/>
+  <table-filter match-catalog="telefonia" match-name="tiposdispositivos"/>
+  <table-filter match-catalog="telefonia" match-name="tipostarifas"/>
+  <table-filter match-catalog="telefonia" match-name="tipostarjetas"/>
+  <table-filter match-catalog="telefonia" match-name="usuarios"/>
+</hibernate-reverse-engineering>

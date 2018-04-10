@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25-ene-2018 9:22:36 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="muestra.Tiposdispositivos" table="tiposdispositivos" catalog="telefonia" optimistic-lock="version">
+        <id name="idtipodispositivo" type="java.lang.Integer">
+            <column name="idtipodispositivo" />
+            <generator class="identity" />
+        </id>
+        <property name="tipo" type="string">
+            <column name="tipo" length="70" not-null="true" />
+        </property>
+        <property name="activo" type="java.lang.Boolean">
+            <column name="activo" />
+        </property>
+        <set name="terminaleses" table="terminales" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idtipodispositivo" />
+            </key>
+            <one-to-many class="muestra.Terminales" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25-ene-2018 9:22:36 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="muestra.Numeros" table="numeros" catalog="telefonia" optimistic-lock="version">
+        <id name="idnumero" type="java.lang.Integer">
+            <column name="idnumero" />
+            <generator class="identity" />
+        </id>
+        <property name="numcorto" type="string">
+            <column name="numcorto" length="70" not-null="true" unique="true" />
+        </property>
+        <property name="numlargo" type="string">
+            <column name="numlargo" length="70" not-null="true" unique="true" />
+        </property>
+        <property name="observaciones" type="string">
+            <column name="observaciones" length="250" />
+        </property>
+        <property name="activo" type="java.lang.Boolean">
+            <column name="activo" />
+        </property>
+        <set name="tarjetases" table="tarjetas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idnumero" />
+            </key>
+            <one-to-many class="muestra.Tarjetas" />
+        </set>
+    </class>
+</hibernate-mapping>

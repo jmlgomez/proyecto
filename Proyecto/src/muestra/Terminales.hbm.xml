@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25-ene-2018 9:22:36 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="muestra.Terminales" table="terminales" catalog="telefonia" optimistic-lock="version">
+        <id name="idterminal" type="java.lang.Integer">
+            <column name="idterminal" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="estados" class="muestra.Estados" fetch="select">
+            <column name="idestado" />
+        </many-to-one>
+        <many-to-one name="marcas" class="muestra.Marcas" fetch="select">
+            <column name="idmarca" />
+        </many-to-one>
+        <many-to-one name="tiposdispositivos" class="muestra.Tiposdispositivos" fetch="select">
+            <column name="idtipodispositivo" />
+        </many-to-one>
+        <property name="modelo" type="string">
+            <column name="modelo" length="80" not-null="true" />
+        </property>
+        <property name="imei" type="string">
+            <column name="imei" length="90" not-null="true" unique="true" />
+        </property>
+        <property name="cambioimei" type="string">
+            <column name="cambioimei" length="90" />
+        </property>
+        <property name="numserie" type="string">
+            <column name="numserie" length="90" unique="true" />
+        </property>
+        <property name="observaciones" type="string">
+            <column name="observaciones" length="250" />
+        </property>
+        <set name="entregases" table="entregas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idterminal" />
+            </key>
+            <one-to-many class="muestra.Entregas" />
+        </set>
+        <set name="averiasterminalesesForImeiantiguo" table="averiasterminales" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="imeiantiguo" not-null="true" />
+            </key>
+            <one-to-many class="muestra.Averiasterminales" />
+        </set>
+        <set name="averiasterminalesesForImeinuevo" table="averiasterminales" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="imeinuevo" not-null="true" />
+            </key>
+            <one-to-many class="muestra.Averiasterminales" />
+        </set>
+        <set name="histestadoses" table="histestados" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idterminal" />
+            </key>
+            <one-to-many class="muestra.Histestados" />
+        </set>
+    </class>
+</hibernate-mapping>

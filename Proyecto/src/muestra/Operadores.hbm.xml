@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25-ene-2018 9:22:36 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="muestra.Operadores" table="operadores" catalog="telefonia" optimistic-lock="version">
+        <id name="idoperador" type="java.lang.Integer">
+            <column name="idoperador" />
+            <generator class="identity" />
+        </id>
+        <property name="usuariooperador" type="string">
+            <column name="usuariooperador" length="70" not-null="true" />
+        </property>
+        <set name="entregases" table="entregas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idoperador" />
+            </key>
+            <one-to-many class="muestra.Entregas" />
+        </set>
+        <set name="averiasterminaleses" table="averiasterminales" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idoperador" />
+            </key>
+            <one-to-many class="muestra.Averiasterminales" />
+        </set>
+        <set name="averiassims" table="averiassim" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idoperador" />
+            </key>
+            <one-to-many class="muestra.Averiassim" />
+        </set>
+    </class>
+</hibernate-mapping>

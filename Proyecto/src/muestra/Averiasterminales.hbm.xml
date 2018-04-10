@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25-ene-2018 9:22:36 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="muestra.Averiasterminales" table="averiasterminales" catalog="telefonia" optimistic-lock="version">
+        <id name="idaveriasterminal" type="java.lang.Integer">
+            <column name="idaveriasterminal" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="operadores" class="muestra.Operadores" fetch="select">
+            <column name="idoperador" />
+        </many-to-one>
+        <many-to-one name="terminalesByImeiantiguo" class="muestra.Terminales" fetch="select">
+            <column name="imeiantiguo" not-null="true" />
+        </many-to-one>
+        <many-to-one name="terminalesByImeinuevo" class="muestra.Terminales" fetch="select">
+            <column name="imeinuevo" not-null="true" />
+        </many-to-one>
+        <property name="fechaaveria" type="date">
+            <column name="fechaaveria" length="10" />
+        </property>
+        <property name="fechaentrega" type="date">
+            <column name="fechaentrega" length="10" />
+        </property>
+        <property name="icc" type="string">
+            <column name="icc" length="40" not-null="true" />
+        </property>
+        <property name="enviadoreparar" type="java.lang.Boolean">
+            <column name="enviadoreparar" />
+        </property>
+        <property name="observaciones" type="string">
+            <column name="observaciones" length="250" />
+        </property>
+    </class>
+</hibernate-mapping>

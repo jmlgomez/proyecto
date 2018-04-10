@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25-ene-2018 9:22:36 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="muestra.Averiassim" table="averiassim" catalog="telefonia" optimistic-lock="version">
+        <id name="idaveriassim" type="java.lang.Integer">
+            <column name="idaveriassim" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="operadores" class="muestra.Operadores" fetch="select">
+            <column name="idoperador" />
+        </many-to-one>
+        <many-to-one name="tarjetasByTarjetaantigua" class="muestra.Tarjetas" fetch="select">
+            <column name="tarjetaantigua" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tarjetasByTarjetanueva" class="muestra.Tarjetas" fetch="select">
+            <column name="tarjetanueva" not-null="true" />
+        </many-to-one>
+        <property name="fechaaveriasim" type="date">
+            <column name="fechaaveriasim" length="10" />
+        </property>
+        <property name="fechaentregasim" type="date">
+            <column name="fechaentregasim" length="10" />
+        </property>
+        <property name="observaciones" type="string">
+            <column name="observaciones" length="250" />
+        </property>
+    </class>
+</hibernate-mapping>

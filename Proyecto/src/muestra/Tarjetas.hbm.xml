@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25-ene-2018 9:22:36 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="muestra.Tarjetas" table="tarjetas" catalog="telefonia" optimistic-lock="version">
+        <id name="idtarjeta" type="java.lang.Integer">
+            <column name="idtarjeta" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="numeros" class="muestra.Numeros" fetch="select">
+            <column name="idnumero" />
+        </many-to-one>
+        <many-to-one name="tipostarifas" class="muestra.Tipostarifas" fetch="select">
+            <column name="idtipotarifa" />
+        </many-to-one>
+        <many-to-one name="tipostarjetas" class="muestra.Tipostarjetas" fetch="select">
+            <column name="idtipotarjeta" />
+        </many-to-one>
+        <property name="pin" type="int">
+            <column name="pin" not-null="true" />
+        </property>
+        <property name="puk" type="int">
+            <column name="puk" not-null="true" />
+        </property>
+        <property name="icc" type="string">
+            <column name="icc" length="40" not-null="true" unique="true" />
+        </property>
+        <property name="tipo" type="string">
+            <column name="tipo" length="70" not-null="true" />
+        </property>
+        <property name="disponible" type="java.lang.Boolean">
+            <column name="disponible" />
+        </property>
+        <property name="historialaveria" type="string">
+            <column name="historialaveria" length="250" />
+        </property>
+        <property name="observaciones" type="string">
+            <column name="observaciones" length="250" />
+        </property>
+        <set name="entregases" table="entregas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idtarjeta" />
+            </key>
+            <one-to-many class="muestra.Entregas" />
+        </set>
+        <set name="averiassimsForTarjetaantigua" table="averiassim" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="tarjetaantigua" not-null="true" />
+            </key>
+            <one-to-many class="muestra.Averiassim" />
+        </set>
+        <set name="averiassimsForTarjetanueva" table="averiassim" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="tarjetanueva" not-null="true" />
+            </key>
+            <one-to-many class="muestra.Averiassim" />
+        </set>
+    </class>
+</hibernate-mapping>

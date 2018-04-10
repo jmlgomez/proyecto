@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25-ene-2018 9:22:36 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="muestra.Histestados" table="histestados" catalog="telefonia" optimistic-lock="version">
+        <id name="idhistestado" type="java.lang.Integer">
+            <column name="idhistestado" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="estados" class="muestra.Estados" fetch="select">
+            <column name="idestado" />
+        </many-to-one>
+        <many-to-one name="terminales" class="muestra.Terminales" fetch="select">
+            <column name="idterminal" />
+        </many-to-one>
+        <property name="fechahistestado" type="date">
+            <column name="fechahistestado" length="10" />
+        </property>
+        <property name="tipohistestado" type="string">
+            <column name="tipohistestado" length="40" />
+        </property>
+        <property name="descripcionhistestado" type="string">
+            <column name="descripcionhistestado" length="250" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25-ene-2018 9:22:36 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="muestra.Entregas" table="entregas" catalog="telefonia" optimistic-lock="version">
+        <id name="identrega" type="java.lang.Integer">
+            <column name="identrega" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="operadores" class="muestra.Operadores" fetch="select">
+            <column name="idoperador" />
+        </many-to-one>
+        <many-to-one name="tarjetas" class="muestra.Tarjetas" fetch="select">
+            <column name="idtarjeta" />
+        </many-to-one>
+        <many-to-one name="terminales" class="muestra.Terminales" fetch="select">
+            <column name="idterminal" />
+        </many-to-one>
+        <many-to-one name="usuarios" class="muestra.Usuarios" fetch="select">
+            <column name="idusuario" />
+        </many-to-one>
+        <property name="fechaentrega" type="date">
+            <column name="fechaentrega" length="10" not-null="true" />
+        </property>
+        <property name="firmarecepcion" type="string">
+            <column name="firmarecepcion" length="40" not-null="true" />
+        </property>
+        <property name="observaciones" type="string">
+            <column name="observaciones" length="250" />
+        </property>
+    </class>
+</hibernate-mapping>
